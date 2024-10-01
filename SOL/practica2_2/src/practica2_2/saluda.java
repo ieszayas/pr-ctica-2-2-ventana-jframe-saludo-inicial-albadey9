@@ -6,7 +6,6 @@ package practica2_2;
 
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author DAM2_06
@@ -18,6 +17,8 @@ public class saluda extends javax.swing.JFrame {
      */
     public saluda() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -33,8 +34,12 @@ public class saluda extends javax.swing.JFrame {
         Boton_saluda = new javax.swing.JButton();
         Texto_nombre = new javax.swing.JTextField();
         Imagen_mano = new javax.swing.JLabel();
+        Label_apellido = new javax.swing.JLabel();
+        Texto_apellido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SALUDA");
+        setAlwaysOnTop(true);
 
         Texto_usuario.setText("Escribe el nombre de usuario:");
 
@@ -47,55 +52,79 @@ public class saluda extends javax.swing.JFrame {
 
         Imagen_mano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/practica2_2/media/saluda.png"))); // NOI18N
 
+        Label_apellido.setText("Escribe el apellido:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(Texto_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(Boton_saluda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Texto_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(116, 116, 116)
+                            .addComponent(Texto_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(Texto_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(Boton_saluda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                        .addGap(150, 150, 150)
+                        .addComponent(Label_apellido)))
+                .addContainerGap(109, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Texto_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Imagen_mano, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))))
+                .addComponent(Imagen_mano, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(Imagen_mano, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Texto_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Texto_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Label_apellido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(Texto_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Boton_saluda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_saludaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_saludaActionPerformed
         String nombre = Texto_nombre.getText().trim();
-        
-        if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor rellena el campo","Error", JOptionPane.ERROR_MESSAGE);
-        }else {
-            JOptionPane.showMessageDialog(this, "¡Hola " + nombre + "!","Saludo", JOptionPane.INFORMATION_MESSAGE);
+        String apellido = Texto_apellido.getText().trim();
+
+        if (nombre.isEmpty() || apellido.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor rellena el campo", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } 
+        if (nombre.length() < 5 || apellido.length() < 5){
+            JOptionPane.showMessageDialog(this, "El nombre y el apellido deben tener al menos 5 letras", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+            JOptionPane.showMessageDialog(this, "El nombre y el apellido no pueden contener símbolos numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "¡Hola " + nombre + " " + apellido + "!", "Saludo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         Texto_nombre.setText("");
+        Texto_apellido.setText("");
     }//GEN-LAST:event_Boton_saludaActionPerformed
 
     /**
@@ -136,6 +165,8 @@ public class saluda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_saluda;
     private javax.swing.JLabel Imagen_mano;
+    private javax.swing.JLabel Label_apellido;
+    private javax.swing.JTextField Texto_apellido;
     private javax.swing.JTextField Texto_nombre;
     private javax.swing.JLabel Texto_usuario;
     // End of variables declaration//GEN-END:variables
